@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use OWolf\Credentials\AccessTokenCredentials;
 use OWolf\Credentials\AnonymousCredentials;
 use OWolf\Laravel\UserOAuthManager;
+use OWolf\Laravel\Util;
 
 class DailymotionCredentialsProvider extends ServiceProvider
 {
@@ -15,9 +16,7 @@ class DailymotionCredentialsProvider extends ServiceProvider
             $manager->addDriver('dailymotion.oauth', function ($name, $config) {
                 $oauth = array_get($config, 'oauth', []);
 
-                $oauth['redirectUri'] = isset($oauth['redirectUri'])
-                    ? value($oauth['redirectUri'])
-                    : route('oauth.callback', [$name]);
+                $oauth['redirectUri'] = Util::redirectUri(array_get($oauth, 'redirectUri'), $name);
 
                 $provider = new Dailymotion($oauth);
                 return new DailymotionOAuthHandler($provider, $name, $config);

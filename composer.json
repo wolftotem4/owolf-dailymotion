@@ -3,7 +3,7 @@
     "license": "MIT",
     "require": {
         "wolftotem4/oauth2-dailymotion": "^0.9.1",
-        "wolftotem4/owolf-laravel": "^0.1.0"
+        "wolftotem4/owolf-laravel": "^0.1"
     },
     "autoload": {
         "psr-4": {
