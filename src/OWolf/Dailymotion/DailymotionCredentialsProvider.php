@@ -26,7 +26,7 @@ class DailymotionCredentialsProvider extends ServiceProvider
         $this->app->resolving('owolf.credentials', function ($manager, $app) {
             $manager->addDriver('dailymotion.oauth', function ($name, $config) use ($app) {
                 $manager = $this->app->make(UserOAuthManager::class);
-                $session = $manager->session($name);
+                $session = $manager->session($name)->refreshExpired();
                 return new AccessTokenCredentials($session->provider(), $session->getAccessToken());
             });
 
