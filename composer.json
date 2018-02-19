@@ -1,5 +1,6 @@
 {
     "name": "wolftotem4/owolf-dailymotion",
+    "description": "Dailymotion Driver for OWolf-Laravel",
     "license": "MIT",
     "require": {
         "wolftotem4/oauth2-dailymotion": "^0.9.1",
